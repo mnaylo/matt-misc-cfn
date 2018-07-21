@@ -1,0 +1,32 @@
+## Setting up GoPhish on AWS
+
+1. Run gophish-server.json
+*The CFN makes a security group with access from a specified CIDR block*
+
+2. Modify security group to allow global access form 80 / 443.
+
+3. SSH with .pem key 
+$ 'ssh -i <Path to .pem> <Public DNS (IPv4)>' E.g. ssh -i "ssh-gophish.pem" ec2-user@ec2-34-230-153-253.compute-1.amazonaws.com
+
+4. $ 'wget https://github.com/gophish/gophish/releases/download/v0.6.0/gophish-v0.6.0-linux-64bit.zip'
+
+5. $ 'sudo unzip gophish-v0.6.0-linux-64bit.zip -d /opt'
+
+6. $ 'ln -s /opt/gophish-v0.6.0-linux-64bit/ /opt/gophish'
+
+7. Navigate to <Private DNS/opt> and $ sudo vi config.json, changing admin_server.listen_url to 0.0.0.0:3333 to expose GoPhish to the internet.
+
+8. $ 'sudo  yum install sendmail sendmail-cf m4'
+
+9. To start GoPhish $ 'sudo ./gophish'
+
+
+
+### Steps to work on / troubleshoot
+
+1. Run GoPhish as a service instead of step 9
+
+2. See if '$ /etc/init.d/sendmail restart' is required
+
+3. Follow Go Phish user guide for email template and landing page
+
