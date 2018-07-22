@@ -1,4 +1,4 @@
-## Setting up GoPhish on AWS
+#### Setting up GoPhish on AWS
 
 1. Run gophish-server.json
 *The CFN makes a security group with access from a specified CIDR block*
@@ -20,13 +20,11 @@ $ 'ssh -i <Path to .pem> <Public DNS (IPv4)>' E.g. ssh -i "ssh-gophish.pem" ec2-
 
 9. To start GoPhish $ 'sudo ./gophish'
 
+10. Use the 'disown' command so you can exit the terminal window and leave the gophish server running. E.g. 'sudo ./gophish & disown' *A reboot will still kill the process*
+
 
 
 ### Steps to work on / troubleshoot
 
-1. Run GoPhish as a service instead of step 9
-
-2. See if '$ /etc/init.d/sendmail restart' is required
-
-3. No redirect from Fake Dropbox to Training
+* No redirect from Fake Dropbox to Training
 
